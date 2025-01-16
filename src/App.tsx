@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="bg-gray min-h-screen text-smoke cursor-default">
       <NavBar />
-      <main className="px-5">
+      <main className="px-5 pb-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />

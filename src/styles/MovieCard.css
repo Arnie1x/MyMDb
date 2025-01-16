@@ -7,6 +7,20 @@
   background-color: transparent;
 }
 
+.movie-overlay{
+    position: relative;
+}
+
+.favoriteBtn { 
+    display: hidden;
+    color: transparent;
+}
+
+:hover.movie-overlay .favoriteBtn {
+  display: absolute;
+  color: #F2F4F3;
+}
+
 :hover.movie-card .movie-card-border {
   background-color: #00AFB5;
 }

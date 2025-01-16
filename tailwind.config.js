@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     colors: {
+      "transparent": "transparent",
       "black": "#0A0908",
       "vermilion": "#FF312E",
       "verdigris": "#00AFB5",

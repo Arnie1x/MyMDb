@@ -1,47 +1,28 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import MovieCard from "../components/MovieCard";
+import '../styles/Home.css'
+import { searchMovie, getPopularMovies } from "../services/api";
 
 function Home() {
-    const [searchQuery, setSearchQuery] = React.useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    const movies: Movie[] = [
-        {
-            id: "0",
-            Poster: "",
-            Title: "Five Nights at Freddy's",
-            Year: "2024"
-        },
-        {
-            id: "1",
-            Poster: "",
-            Title: "The Matrix",
-            Year: "1999"
-        },
-        {
-            id: "2",
-            Poster: "",
-            Title: "The Matrix",
-            Year: "1999"
-        },
-        {
-            id: "3",
-            Poster: "",
-            Title: "The Matrix",
-            Year: "1999"
-        },
-        {
-            id: "4",
-            Poster: "",
-            Title: "The Matrix",
-            Year: "1999"
-        },
-        {
-            id: "5",
-            Poster: "",
-            Title: "The Matrix",
-            Year: "1999"
-        },
-    ]
+    useEffect(() => {
+        const loadPopularMovies = async () => {
+            try {
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            } catch (error) {
+                console.error(error);
+                setError("Failed to load Movies...");
+            } finally {
+                setLoading(false);  
+            }
+        }
+        loadPopularMovies();
+    }, [])
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -49,14 +30,13 @@ function Home() {
     }
     return (
         <div className="h-full w-full flex flex-col items-center">
-            {/* <h1 className="text-5xl">Home</h1> */}
             <div className="w-full ">
                 <form onSubmit={handleSearch} className="md:max-w-[50rem] w-full p-3 my-5 mx-auto flex flex-row gap-4 glass-dark rounded-xl">
                     <input type="text" className="w-full p-2 bg-[#00000000]" placeholder="Search for a Movie..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                    <button type="submit">Search</button>
+                    <button type="submit" className="search-button">Search</button>
                 </form>
             </div>
-            <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-10">
+            <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
                 {movies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
