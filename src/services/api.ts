@@ -10,7 +10,7 @@ export const getPopularMovies = async () => {
 
 export const searchMovie = async (query: string) => {
     query = encodeURIComponent(query);
-    const response = await axios.post(`${BASE_URL}/search/movie?api_key=${API_KEY}`, { "query": query });
+    const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
     return response.data.results;
 }
 
