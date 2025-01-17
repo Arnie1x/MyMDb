@@ -17,7 +17,7 @@ To run the application locally, follow these steps:
 1. Clone the Repository:
 
   ```bash
-  git clone https://github.com/arnie1x/mymbdb.git
+  https://github.com/Arnie1x/MyMDb.git
   ```
 
 2. Install Dependencies:
