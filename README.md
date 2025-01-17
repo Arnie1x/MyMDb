@@ -1,4 +1,4 @@
-# Popcorny
+# MyMDb
 
 This is a movie application built using React, TypeScript, and Vite. It allows users to search for movies, view movie details, and add movies to their favorites.
 
@@ -17,7 +17,7 @@ To run the application locally, follow these steps:
 1. Clone the Repository:
 
   ```bash
-  git clone https://github.com/arnie1x/popcorny.git
+  git clone https://github.com/arnie1x/mymbdb.git
   ```
 
 2. Install Dependencies:
